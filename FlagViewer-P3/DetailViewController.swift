@@ -19,6 +19,8 @@ class DetailViewController: UIViewController {
         title = detailVCTitle
         navigationItem.largeTitleDisplayMode = .never
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(shareFlag))
+        
         if let imageToLoad = selectedImage {
             FlagView.image = UIImage(named: imageToLoad)
         }
@@ -27,15 +29,16 @@ class DetailViewController: UIViewController {
         FlagView.layer.borderColor = UIColor.black.cgColor
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func shareFlag() {
+        
+        guard let image = FlagView.image?.pngData() else {
+            print("No image found")
+            return
+        }
+        let items: [Any] = [selectedImage!, image]
+        let vc = UIActivityViewController(activityItems: items, applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
+        
     }
-    */
-
 }

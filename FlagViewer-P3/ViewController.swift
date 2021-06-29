@@ -21,6 +21,8 @@ class ViewController: UITableViewController {
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
         
+
+        
         for item in items {
             if item.hasSuffix(".png") {
                 countries.append(item)
@@ -46,5 +48,6 @@ class ViewController: UITableViewController {
             vc.detailVCTitle = "Flag of \(countries[indexPath.row].capitalized)"
         }
     }
+    
 
 }
