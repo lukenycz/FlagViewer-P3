@@ -9,7 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet var FlagView: UIImageView!
+    @IBOutlet var FlagImageView: UIImageView!
     var selectedImage: String?
     var detailVCTitle: String?
     
@@ -22,16 +22,16 @@ class DetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(shareFlag))
         
         if let imageToLoad = selectedImage {
-            FlagView.image = UIImage(named: imageToLoad)
+            FlagImageView.image = UIImage(named: imageToLoad)
         }
         
-        FlagView.layer.borderWidth = 2
-        FlagView.layer.borderColor = UIColor.black.cgColor
+        FlagImageView.layer.borderWidth = 2
+        FlagImageView.layer.borderColor = UIColor.black.cgColor
     }
     
     @objc func shareFlag() {
         
-        guard let image = FlagView.image?.pngData() else {
+        guard let image = FlagImageView.image?.pngData() else {
             print("No image found")
             return
         }
