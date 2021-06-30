@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UITableViewController {
     
     var countries = [String]()
-    var countryTitle = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
